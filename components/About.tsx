@@ -1,101 +1,99 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function About() {
   return (
     <section id="about" className="section container" style={{
       display: 'flex',
       alignItems: 'center',
-      minHeight: '80vh'
+      padding: '120px 24px',
+      overflow: 'hidden'
     }}>
       <div style={{
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        gap: '60px',
+        gap: '80px',
         alignItems: 'center',
-        width: '100%'
+        width: '100%',
+        justifyContent: 'center'
       }}>
-        {/* Left Side: Owner Photo Placeholder */}
+        {/* Left Side: Owner Photo */}
         <div style={{
           flex: '1 1 400px',
+          maxWidth: '500px',
           display: 'flex',
           justifyContent: 'center',
           position: 'relative'
         }}>
-          {/* Decorative background shape behind photo */}
-          <div style={{
-            position: 'absolute',
-            top: '10%',
-            left: '5%',
-            width: '90%',
-            height: '90%',
-            background: 'var(--pastel-sage)',
-            borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%',
-            zIndex: 0,
-            opacity: 0.5
+          {/* Decorative background blob */}
+          <div className="blob-bg blob-2" style={{
+            width: '100%',
+            height: '110%',
+            top: '-5%',
+            left: '-10%',
+            opacity: 0.8
           }}></div>
           
-          <div className="glass-panel" style={{
+          <div style={{
             width: '100%',
-            maxWidth: '450px',
             aspectRatio: '3/4',
-            borderRadius: '24px',
             position: 'relative',
             zIndex: 1,
             overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.3))'
+            borderRadius: '20px',
+            boxShadow: 'var(--shadow-soft)'
           }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', fontFamily: 'var(--font-heading)', fontStyle: 'italic' }}>
-              [Owner Photo]
-            </p>
+            <div style={{
+              width: '100%',
+              height: '100%',
+              backgroundImage: 'url(/owner.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'contrast(1.05) brightness(1.02)'
+            }} />
           </div>
         </div>
 
-        {/* Right Side: About Them Text */}
+        {/* Right Side: About Text */}
         <div style={{
           flex: '1 1 400px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '24px'
+          gap: '24px',
+          maxWidth: '500px'
         }}>
           <h2 style={{
-            fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+            fontSize: 'clamp(2rem, 4vw, 2.5rem)',
             color: 'var(--text-primary)',
-            lineHeight: 1.2
+            textTransform: 'uppercase',
+            letterSpacing: '2px'
           }}>
-            Meet the <span className="text-gradient">Artist</span>
+            About
           </h2>
           
           <p style={{
-            fontSize: '1.15rem',
+            fontSize: '1rem',
             lineHeight: 1.8,
-            color: 'var(--text-secondary)'
+            color: 'var(--text-primary)',
+            fontFamily: 'var(--font-body)'
           }}>
             Welcome to the creative world behind Hints&Hues. Every resin piece is born from a deep passion for fluid dynamics, color psychology, and modern aesthetics.
           </p>
           
           <p style={{
-            fontSize: '1.15rem',
+            fontSize: '1rem',
             lineHeight: 1.8,
-            color: 'var(--text-secondary)'
+            color: 'var(--text-primary)',
+            fontFamily: 'var(--font-body)'
           }}>
             By blending traditional techniques with contemporary design, the focus is on creating timeless, handcrafted art that elevates any space it inhabits. Drawing inspiration from nature's subtle hues and organic shapes, each creation tells a unique story.
           </p>
           
-          <div style={{ marginTop: '10px' }}>
-            <span style={{ 
-              fontFamily: 'var(--font-heading)', 
-              fontSize: '1.5rem', 
-              color: 'var(--pastel-pink)', 
-              fontWeight: 600,
-              display: 'inline-block',
-              borderBottom: '2px solid var(--pastel-peach)'
-            }}>
-              — The Creator
-            </span>
+          <div style={{ marginTop: '20px' }}>
+            <Link href="#collections" className="btn-outline">
+              Find out more
+            </Link>
           </div>
         </div>
       </div>

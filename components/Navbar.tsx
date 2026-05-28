@@ -8,11 +8,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -26,63 +22,57 @@ export default function Navbar() {
       width: '100%',
       height: 'var(--nav-height)',
       zIndex: 1000,
-      transition: 'all 0.4s ease',
+      transition: 'all 0.3s ease',
       background: scrolled ? 'var(--glass-bg)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(16px)' : 'none',
-      WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--glass-border)' : '1px solid transparent',
-      boxShadow: scrolled ? 'var(--shadow-premium)' : 'none',
+      backdropFilter: scrolled ? 'blur(10px)' : 'none',
+      WebkitBackdropFilter: scrolled ? 'blur(10px)' : 'none',
     }}>
       <div className="container" style={{
         height: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        padding: '0 40px'
       }}>
-        <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <img src="/logo.png" alt="Hints&Hues Logo" style={{ height: '40px', width: 'auto', filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.05))' }} />
-          <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 600, letterSpacing: '1px' }}>Hints&Hues</span>
+        {/* Logo */}
+        <div style={{ flex: 1 }}>
+          <Link href="/" style={{ 
+            fontFamily: 'var(--font-heading)', 
+            fontSize: '1.4rem', 
+            letterSpacing: '1px' 
+          }}>
+            HINTS&HUES
+          </Link>
         </div>
         
+        {/* Center Links */}
         <nav style={{
           display: 'flex',
-          gap: '30px',
+          gap: '40px',
           fontFamily: 'var(--font-body)',
-          fontSize: '0.95rem',
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          letterSpacing: '1px'
+          fontSize: '0.85rem',
+          letterSpacing: '0.5px',
+          textTransform: 'uppercase'
         }}>
-          <Link href="#home" style={{ position: 'relative' }}>
-            <span className="nav-link">Home</span>
-          </Link>
-          <Link href="#about" style={{ position: 'relative' }}>
-            <span className="nav-link">About</span>
-          </Link>
-          <Link href="#gallery" style={{ position: 'relative' }}>
-            <span className="nav-link">Gallery</span>
-          </Link>
+          <Link href="#about" className="nav-link">About us</Link>
+          <Link href="#shop" className="nav-link">Shop</Link>
+          <Link href="#collections" className="nav-link">Collections</Link>
         </nav>
+
+        {/* Right Actions */}
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '20px' }}>
+          {/* Removed Cart */}
+        </div>
       </div>
 
       <style jsx>{`
         .nav-link {
           position: relative;
-          display: inline-block;
-          padding-bottom: 4px;
+          color: var(--text-primary);
+          transition: opacity 0.3s ease;
         }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          width: 0;
-          height: 2px;
-          bottom: 0;
-          left: 0;
-          background: var(--pastel-peach);
-          transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-          width: 100%;
+        .nav-link:hover {
+          opacity: 0.7;
         }
       `}</style>
     </header>

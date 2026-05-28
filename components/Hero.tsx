@@ -1,82 +1,72 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section id="home" className="section" style={{
+    <section id="home" style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
-      paddingTop: 'var(--nav-height)'
+      paddingTop: 'var(--nav-height)',
+      backgroundImage: 'url(/hero-bg.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      borderBottomLeftRadius: '40px',
+      borderBottomRightRadius: '40px',
+      overflow: 'hidden'
     }}>
-      {/* Decorative Orbs */}
-      <div className="animate-float" style={{
+      {/* Soft overlay to ensure text readability */}
+      <div style={{
         position: 'absolute',
-        top: '20%',
-        left: '15%',
-        width: '300px',
-        height: '300px',
-        background: 'var(--pastel-pink)',
-        borderRadius: '50%',
-        filter: 'blur(100px)',
-        opacity: 0.15,
-        zIndex: 0
-      }} />
-      <div className="animate-float" style={{
-        position: 'absolute',
-        bottom: '10%',
-        right: '15%',
-        width: '400px',
-        height: '400px',
-        background: 'var(--pastel-blue)',
-        borderRadius: '50%',
-        filter: 'blur(120px)',
-        opacity: 0.1,
-        zIndex: 0,
-        animationDelay: '1s'
+        inset: 0,
+        background: 'linear-gradient(to bottom, rgba(250, 246, 245, 0.2), rgba(250, 246, 245, 0.4))',
+        zIndex: 1
       }} />
 
-      <div className="container" style={{
+      <div className="container animate-fade-in" style={{
         position: 'relative',
-        zIndex: 1,
+        zIndex: 2,
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '30px'
+        gap: '20px',
+        marginTop: '-5vh' // visually center it ignoring the nav
       }}>
-        <div className="glass-panel animate-fade-in" style={{
-          padding: '60px',
-          borderRadius: '24px',
-          maxWidth: '800px',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '24px'
-        }}>
-          <img src="/logo.png" alt="Hints&Hues Large Logo" style={{ height: '120px', filter: 'drop-shadow(0 0 15px rgba(0,0,0,0.05))' }} />
-          
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
+          <img src="/logo.png" alt="Hints&Hues Logo" style={{ height: '140px', objectFit: 'contain' }} />
           <h1 style={{
-            fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+            fontSize: 'clamp(3.5rem, 8vw, 6rem)',
             lineHeight: 1.1,
-            letterSpacing: '2px',
-            textShadow: '0 4px 10px rgba(0,0,0,0.02)'
+            letterSpacing: '4px',
+            color: 'var(--text-primary)',
+            textTransform: 'uppercase',
+            fontWeight: 400,
+            margin: 0
           }}>
-            <span className="text-gradient">"Hints&Hues"</span>
+            Hints&Hues
           </h1>
-          
-          <p style={{
-            fontSize: '1.2rem',
-            color: 'var(--text-secondary)',
-            maxWidth: '600px',
-            lineHeight: 1.6,
-            fontWeight: 300,
-            textShadow: 'none'
-          }}>
-            Handcrafted artistic expression, fluid textures, dreamy color blending, and contemporary elegance.
-          </p>
+        </div>
+        
+        <p style={{
+          fontSize: '1.1rem',
+          color: 'var(--text-primary)',
+          maxWidth: '500px',
+          lineHeight: 1.6,
+          fontWeight: 400,
+          fontFamily: 'var(--font-body)',
+          letterSpacing: '0.5px'
+        }}>
+         Where art flows like color and every piece tells a story.
+        </p>
+
+        <div style={{ marginTop: '20px' }}>
+          <Link href="#collections" className="btn-primary">
+            Explore collection
+          </Link>
         </div>
       </div>
     </section>
